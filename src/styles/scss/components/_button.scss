@@ -1,0 +1,217 @@
+@use '../abstracts/theme' as *;
+
+$elevation-btn:
+   0px 1px 3px 1px rgb(255 255 255 / 16%),
+   0px 4px 4px -1px rgb(218 227 255 / 25%),
+   0px 0px 0px 1px #4f46e5,
+   inset 0px 1px 5px rgb(210 210 254 / 5%),
+   inset 0px 0.5px 0px rgb(255 255 255 / 10%);
+
+button {
+   border: none;
+   outline: none;
+}
+
+// button {
+//    height: 40px;
+//    border: none;
+//    cursor: pointer;
+//    font-size: 14px;
+//    font-variation-settings: "wght" 600;
+// }
+
+// .button {
+//    padding: 8px 12px;
+//    border-radius: 8px;
+//    transition: all .2s ease-in-out;
+   
+//    &.active {
+//       box-shadow: 
+//       0px 1px 3px 1px rgb(255 255 255 / 16%),
+//       0px 4px 4px -1px rgb(218 227 255 / 25%),
+//       0px 0px 0px 1px #4f46e5,
+//       inset 0px 1px 5px rgb(210 210 254 / 5%),
+//       inset 0px 0.5px 0px rgb(255 255 255 / 10%);
+//    }
+// }
+
+// .primary-button {
+//    display: flex;
+//    flex-direction: row;
+//    align-items: center;
+//    justify-content: center;
+//    padding: 0px 16px 0px 12px;
+//    gap: 8px;
+//    border-radius: $radius_8;
+//    // background: rgba(79, 70, 229, 0.16);
+//    // background: $primary;
+//    background: rgba($primary, 0.16);   
+//    box-shadow:
+//       0px 1px 3px 1px rgb(255 255 255 / 16%),
+//       // 0px 4px 8px -5px rgb(218 227 255 / 80%),
+//       0px 0px 0px 1px #4f46e5,
+//       inset 0px 1px 5px rgb(210 210 254 / 5%),
+//       inset 0px 0.5px 0px rgb(255 255 255 / 10%);
+      
+      
+//    @include themify($themes) {
+//       color: t('text_light');
+//    }
+
+//    transition: all .2s ease-in-out;
+
+//    &:hover {
+//       background: rgba($primary, 0.4);
+//    }
+// }
+
+// .button_icon {
+//    &:hover {
+//       background-color: #181C22;
+//    }
+// }
+
+a:is(.btn, .btn-primary) {
+   text-decoration: none;
+   color: white;
+   
+   &:has(span) {
+      text-decoration: none;
+      
+      span {
+         display: block;
+         color: white;
+      }
+   }
+}
+
+
+.btn {
+   height: 40px;
+   
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+
+   // font-family: 'Inter', sans-serif;
+   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+   font-size: 0.88rem;
+   font-weight: 500;
+   font-style: normal;
+   padding: 0 12px;
+   box-sizing: border-box;
+   border-radius: $radius_8;
+   cursor: pointer;
+   
+   color: $text_light;
+   transition: $ease;
+
+   &:active,
+   &:focus-visible {
+      transition: box-shadow .1s ease-out;
+      // outline: 1px solid #5C6CF9;
+      // outline-offset: 2px;
+
+      box-shadow: $btnElevation;
+   }
+
+   &.active {
+      // outline: 1px solid $primary_40;
+      box-shadow: 
+         0px 1px 3px 1px rgb(255 255 255 / 16%),
+         0px 4px 4px -1px rgb(218 227 255 / 25%),
+         0px 0px 0px 1px #4f46e5,
+         inset 0px 1px 5px rgb(210 210 254 / 5%),
+         inset 0px 0.5px 0px rgb(255 255 255 / 10%);
+   }
+
+   &-primary {
+      background: rgba($primary, 0.16);
+      box-shadow: $btnElevation;
+         
+      svg path {
+         fill: white;
+      }
+
+      @include themify($themes) {
+         color: t('text_light');
+      }
+   
+      &:hover {
+         background: rgba($primary, 0.40);
+      }
+      &:focus-visible {
+         background: rgba($primary, 0.40);
+         outline: 1px solid white;
+         outline-offset: 2px;
+      }
+   }
+
+   &-default {
+      background: transparent;
+      outline: 2px solid $stroke;
+   
+      @include themify($themes) {
+         color: t('text_dark');
+      }
+
+      &:hover {
+         box-shadow: 0 8px 4px -6px rgb(0 0 0 / 4%), 0 16px 8px -6px rgb(0 0 0 / 2%);
+
+         @include themify($themes) {
+            background: t('color_16');
+         }
+      }
+   }  
+
+   &-ghost {
+      background: transparent;
+      
+      @include themify($themes) {
+         color: t('text_dark');
+      }
+      &:hover {
+         @include themify($themes) {
+            background: t('color_16');
+         }
+      }
+   }
+   
+   &-icon--primary,
+   &-icon--default,
+   &-icon--ghost {
+      padding: 0 8px;
+   }
+
+   &-icon--ghost {
+      @extend .btn-ghost;
+   }
+
+   &-icon--default {
+      @extend .btn-default;
+   }
+   
+   &-icon--primary {
+      @extend .btn-primary;  
+   }
+   
+   &_icon-lead,
+   &_icon-trail {
+      gap: 8px;
+      
+      &.btn_icon-lead {
+         padding: 0 16px 0 12px;
+      }
+      
+      &.btn_icon-trail {
+         padding: 0 12px 0 16px;
+      }
+   }
+
+}
+
+.icon {
+   @include themify($themes) {
+      fill: t('color_100');
+   }
+}

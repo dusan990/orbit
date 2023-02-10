@@ -1,0 +1,133 @@
+$bg--dark: #0A0C0F;
+$fg--dark: #191B1F;
+$text--dark: #ffffff;
+$text_light--dark: #fff;
+$text_dark--dark: #fff;
+$slate_900--dark: #EEEFF2;
+$slate_800--dark: #E1E5EA;
+$slate_700--dark: #D1D5DB;
+$slate_600--dark: #9DA4AE;
+$slate_500--dark: #6A7381;
+$slate_400--dark: #4E555F;
+$slate_300--dark: #3C4149;
+$slate_200--dark: #2B2F36;
+$slate_100--dark: #1D2025;
+$slate_50--dark: #181C22;
+
+$bg--light: #ffffff;
+$fg--light: #F1F5F9;
+$text--light: #000000;
+$text_light--light: #fff;
+$text_dark--light: #000;
+$zinc_900--light: #18181B;
+$zinc_800--light: #27272A;
+$zinc_700--light: #3F3F46;
+$zinc_600--light: #52525B;
+$zinc_500--light: #71717A;
+$zinc_400--light: #A1A1AA;
+$zinc_300--light: #D4D4D8;
+$zinc_200--light: #E4E4E7;
+$zinc_100--light: #F4F4F5;
+$zinc_50--light: #F4F4F5;
+
+$link: rgba(116, 129, 255, 1);
+$input: rgb(92, 108, 249);
+
+$primary: #2233cf;
+$primary_40: #5C6CF9;
+$primary_500: #7481FF;
+
+$btnElevation:
+   0px 1px 3px 1px rgb(255 255 255 / 16%),
+   // 0px 4px 8px -5px rgb(218 227 255 / 80%),
+   0px 0px 0px 1px #4f46e5,
+   inset 0px 1px 5px rgb(210 210 254 / 5%),
+   inset 0px 0.5px 0px rgb(255 255 255 / 10%);
+
+$btn-text: #fff;
+
+$success_100: #8FCA11;
+
+$ease: all .2s ease-in-out;
+
+$radius_4: 4px;
+$radius_8: 8px;
+$radius_16: 16px;
+
+$stroke: #23252A;
+$border: 1px solid #181C22;
+
+$font-primary: 'Inter', sans-serif;
+
+$dark: "dark";
+$light: "light";
+
+
+$bg: 'bg';
+$fg: 'fg';
+$text_light: 'text_light';
+$text_dark: 'text_dark';
+$color_8: 'color_8';
+$color_16: 'color_16';
+$color_24: 'color_24';
+$color_32: 'color_32';
+$color_40: 'color_40';
+$color_48: 'color_48';
+$color_56: 'color_56';
+$color_64: 'color_64';
+$color_80: 'color_80';
+$color_100: 'color_100';
+
+$themes: (
+   $light: (
+      bg: $bg--light,
+      fg: $fg--light,
+      text_light: $text_light--light,
+      text_dark: $text_dark--light,
+      color_8: $zinc_50--light,
+      color_16: $zinc_100--light,
+      color_24: $zinc_200--light,
+      color_32: $zinc_300--light,
+      color_40: $zinc_400--light,
+      color_48: $zinc_500--light,
+      color_56: $zinc_600--light,
+      color_64: $zinc_700--light,
+      color_80: $zinc_800--light,
+      color_100: $zinc_900--light,
+   ),
+   $dark: (
+      bg: $bg--dark,
+      fg: $fg--dark,
+      text_light: $text_light--dark,
+      text_dark: $text_dark--dark,
+      color_8: $slate_50--dark,
+      color_16: $slate_100--dark,
+      color_24: $slate_200--dark,
+      color_32: $slate_300--dark,
+      color_40: $slate_400--dark,
+      color_48: $slate_500--dark,
+      color_56: $slate_600--dark,
+      color_64: $slate_700--dark,
+      color_80: $slate_800--dark,
+      color_100: $slate_900--dark,
+   )
+);
+
+@mixin themify($themes) {
+   @each $theme, $map in $themes {
+      .theme-#{$theme} & {
+         $theme-map: () !global;
+         @each $key, $submap in $map {
+            $value: map-get(map-get($themes, $theme), '#{$key}');
+            $theme-map: map-merge($theme-map, ($key: $value)) !global;
+         }
+         @content;
+         $theme-map: null !global;
+      }
+   }
+}
+ 
+@function t($key) {
+   @return map-get($theme-map, $key);
+}
+ 

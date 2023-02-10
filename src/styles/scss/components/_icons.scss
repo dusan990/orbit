@@ -1,0 +1,20 @@
+@mixin iconVariation($size) {
+	font-variation-settings:
+		'FILL' 0,
+		'wght' 300,
+		'GRAD' 0,
+		'opsz' $size;
+}
+ 
+
+.material-symbols-outlined {
+	@include iconVariation(20)
+}
+
+.icon24 {
+	@include iconVariation(24)
+}
+
+.icon40 {
+	@include iconVariation(40)
+}

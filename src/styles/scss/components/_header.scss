@@ -1,0 +1,28 @@
+@use '../abstracts' as *;
+
+.main-header {
+   display: flex;
+   align-items: stretch;
+   padding: 12px 24px;
+   gap: 24px;
+   background: $bg--dark;
+   box-shadow: inset 0px -1px 0px 0px #262C34;
+   
+   nav {
+      display: flex;
+      gap: 12px;
+   }
+
+   input {
+      width: 380px;
+   }
+}
+
+.user-nav {
+   margin-left: auto;
+
+   .divider {
+      height: 24px;
+      margin-left: 0;
+   }
+}

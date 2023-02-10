@@ -1,0 +1,22 @@
+.shortcutKey {
+   padding: 0px;
+   gap: 8px;
+   width: 24px;
+   height: 24px;
+   background: #0A0C0F;
+   color: white;
+   box-shadow:
+      0px 2px 1px -1px rgba(218, 227, 255, 0.231373),
+      0px 0px 0px 0.5px #4D5059,
+      inset 0px 1px 5px rgba(210, 210, 254, 0.0470588),
+      inset 0px 0.5px 0px rgba(255, 255, 255, 0.1);
+   border-radius: 4px;
+   flex: none;
+   order: 2;
+   flex-grow: 0;
+
+   font-weight: 400;
+   font-size: 14px;
+   line-height: 24px;
+   text-align: center;
+}

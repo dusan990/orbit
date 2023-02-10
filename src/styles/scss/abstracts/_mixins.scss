@@ -1,0 +1,10 @@
+@mixin background-opacity($color, $opacity) {
+    background: $color;  /*Fallback */
+    background: rgba($color, $opacity);
+}
+
+@mixin focusProperty {
+    outline: 1px solid $primary_40;
+    outline-offset: 2px;
+    transition: outline .1s ease-out;
+}

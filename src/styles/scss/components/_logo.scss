@@ -1,0 +1,8 @@
+.app-logo {
+	filter: saturate(0%);
+	height: 40px;
+	
+	&:hover {
+		filter: saturate(100%);
+	}
+}

@@ -1,0 +1,118 @@
+@use '../abstracts/theme' as *;
+@use '../abstracts/variables' as font;
+
+.textfield {
+	display: flex;
+	flex-direction: column;
+}
+
+label {
+	font: 0.75rem/1rem font.$Hanken;
+	padding: 0 12px 8px 12px;
+
+	@include themify($themes) {
+		color: t('color_56');
+	}
+}
+
+textarea, input {
+	padding: 16px;
+	box-sizing: border-box;
+	font: 0.875rem/1rem font.$Hanken;
+	border-radius: $radius_8;
+	outline: 1px solid transparent;
+	transition: all .2s ease-in-out;
+	
+	@include themify($themes) {
+		background: t('color_8');
+	}
+
+	&.inputField--outline {
+		background: transparent;
+	}
+
+	&:focus-visible,
+	&:focus {
+		outline: 1px solid #4f46e5;
+	}
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+
+   @include themify($themes) {
+      -webkit-text-fill-color: t('text_light');
+      -webkit-box-shadow: 0 0 0px 1000px $color_8 inset;
+   }
+	
+   transition: background-color 5000s ease-in-out 0s;
+}
+
+// // input type password
+// input[type='password'] {
+//    letter-spacing: 1px;
+// }
+
+// .input-field--fill {
+//    height: 48px;
+//    padding: 0 12px;
+//    font-weight: 500;
+	
+//    @include themed() {
+//       background: t($color_16);
+//    }
+//    background: $primary;
+
+//    // .input_fill::-webkit-input-placeholder,
+//    // .input_fill::-moz-placeholder,
+//    // .input_fill::-ms-placeholder,
+//    &::placeholder {
+//       @include themed() {
+//          color: t($color_40);
+//       }
+//    }
+// }
+
+// .input-field--outline {
+//    height: 48px;
+//    padding: 0 12px;
+//    font-weight: 500;
+//    background: transparent;
+
+//    @include themed() {
+//       outline: 1px solid t($color_16);
+//    }
+	
+//    &::placeholder {
+//       @include themed() {
+//          color: t($color_40);
+//       }
+//    }
+// }
+
+.inputWrapper {
+   &__fieldContainer {
+      position: relative;
+      width: 100%;
+
+      input {
+			width: 100%;
+			letter-spacing: 0;
+      }
+		
+      .btn-icon--ghost {
+			width: auto;
+         position: absolute;
+         top: 0;
+         right: 0;
+         margin: 4px;
+      }
+   }  
+}
